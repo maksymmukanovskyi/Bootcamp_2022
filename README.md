@@ -1,2 +1,2 @@
 # Bootcamp_2022
-stuff to repeat
+first home work: https://maksymmukanovskyi.github.io/Bootcamp_2022/Basics/
