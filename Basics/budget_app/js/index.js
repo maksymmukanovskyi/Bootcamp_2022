@@ -3,10 +3,36 @@
 
 // MODEL
 const budgetController = (function(){
+    const Expence = function(id, description, value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+
+    const Income = function(id, description, value){
+        this.id = id;
+        this.description = description;
+        this.value = value;
+    };
+
+    const data ={
+        allItems: {
+            exp: [],
+            inc: [],
+        },
+        totals: {
+            exp: 0,
+            inc: 0,
+        }
+    }
+
+
+
     return {
 
     }
 })();
+
 
 //VIEW
 const UIController = (function(){
@@ -38,7 +64,18 @@ const UIController = (function(){
 
 const controller = (function(budgetCtrl, UICtrl){
 
+    const setupEventListeners = function (){
     const DOM = UICtrl.getDOMstrings();
+
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+    document.addEventListener('keypress', function(evt){
+        if(evt.key === 'Enter'){
+            ctrlAddItem();
+        }
+    })
+    }
+
 
     const ctrlAddItem = function (){
         console.log('works!');
@@ -60,16 +97,15 @@ const controller = (function(budgetCtrl, UICtrl){
         // 5. Display the budget to the UI
     }   
 
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-
-    document.addEventListener('keypress', function(evt){
-        if(evt.key === 'Enter'){
-            ctrlAddItem();
-        }
-    })
+   
 
 
     return {
-
+        init: function(){
+            setupEventListeners();
+        }
     }
-})(budgetController, UIController)
+})(budgetController, UIController);
+
+
+controller.init();
