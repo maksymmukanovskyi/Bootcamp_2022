@@ -159,7 +159,7 @@ body {
 .add__btn {
     font-size: 35px;
     background: none;
-    border: 2px solid #28B9B5;
+    border: 2px solid #28B9B5  !important;
     border-radius: 5px;
     color: #28B9B5;
     cursor: pointer;
