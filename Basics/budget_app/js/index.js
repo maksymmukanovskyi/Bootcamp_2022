@@ -129,7 +129,6 @@ const UIController = (function(){
         percentageLabel: '.budget__expenses--percentage',
         container: '.container',
         expencesPercLabel: '.item__percentage',
-        dateLabel: '.budget__title--month',
     };
     const formatNumber =  function(num, type){
         let numSplit, int, dec;
@@ -144,12 +143,6 @@ const UIController = (function(){
         
         return `${type === 'exp' ? '-': '+'} ${int}.${dec}`;
     };
-
-    const nodeListForEach = function(list, calback){
-        for(let i = 0; i < list.length; i++){
-            calback(list[i], i);
-        }
-    }
 
 
 
@@ -226,7 +219,11 @@ const UIController = (function(){
 
         displayPercentages: function(percentages){
             const percFields = document.querySelectorAll(DOMstrings.expencesPercLabel);
-            
+            const nodeListForEach = function(list, calback){
+                for(let i = 0; i < list.length; i++){
+                    calback(list[i], i);
+                }
+            }
             nodeListForEach(percFields, (curr, idx) => {
                 if(percentages[idx] > 0){
                     curr.textContent = `${percentages[idx]} %`;
@@ -234,26 +231,6 @@ const UIController = (function(){
                     curr.textContent = '---';
                 }
             })
-        },
-
-        displayDate: function(){
-            let month, year;
-            const now = new Date();
-            year = now.getFullYear();
-            month = now.toLocaleString('default', { month: 'long' });
-            document.querySelector(DOMstrings.dateLabel).textContent = `${month}, ${year}`;
-        },
-
-        onChangeType: function(){
-            const fields = document.querySelectorAll(
-                DOMstrings.inputType +',' +
-                DOMstrings.inputDescription +','+
-                DOMstrings.inputValue
-            );
-            nodeListForEach(fields, function(el){
-                el.classList.toggle('red-focus');
-            });
-            document.querySelector(DOMstrings.inputBtn).classList.toggle('red');
         },
         
 
@@ -279,7 +256,6 @@ const controller = (function(budgetCtrl, UICtrl){
     });
 
     document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem)
-    document.querySelector(DOM.inputType).addEventListener('change', UICtrl.onChangeType)
     }
 
     const updateBudget = function(){
@@ -355,7 +331,6 @@ const controller = (function(budgetCtrl, UICtrl){
 
     return {
         init: function(){
-            UICtrl.displayDate();
             UICtrl.displayBudget({
                 budget: 0,
                 totalInc: 0,
