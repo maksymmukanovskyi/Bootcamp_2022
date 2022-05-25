@@ -1,0 +1,28 @@
+{
+  "name": "forkify_2",
+  "version": "1.0.0",
+  "description": "forkify_2 project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack serve --mode development --open "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/maksymmukanovskyi/Bootcamp_2022.git"
+  },
+  "author": "Maksym",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maksymmukanovskyi/Bootcamp_2022/issues"
+  },
+  "homepage": "https://github.com/maksymmukanovskyi/Bootcamp_2022#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^3.11.3"
+  }
+}
