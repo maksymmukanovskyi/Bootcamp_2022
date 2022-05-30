@@ -15,13 +15,16 @@ if(query){
     state.search = new Search(query);
 
     //3. prepare UI for results
-
+        searchView.clearInput();
+        searchView.clearResults();
 
     //4. search for recipe
     await state.search.getResults()
 
     //5. render results on UI
-    console.log(state.search.result);
+    // console.log(state.search.result);
+    searchView.renderResults(state.search.result);
+
 }
 }
 

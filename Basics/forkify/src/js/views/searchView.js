@@ -1,5 +1,11 @@
 import { elements } from './base';
 export const getInput = () => elements.searchInput.value;
+export const clearInput = () => {
+  elements.searchInput.value = '';
+};
+export const clearResults = () => {
+  elements.searchResaultList.innerHTML = '';
+}
 
 
 const renderRecipe = recipe => {
@@ -13,7 +19,7 @@ const renderRecipe = recipe => {
         <p class="preview__publisher">${recipe.publisher}</p>
         <div class="preview__user-generated">
           <svg>
-            <use href="src/img/icons.svg#icon-user"></use>
+            <use href="./icons.svg#icon-user"></use>
           </svg>
         </div>
       </div>
