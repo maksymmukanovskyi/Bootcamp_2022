@@ -4,13 +4,13 @@ export const getInput = () => elements.searchInput.value;
 
 const renderRecipe = recipe => {
     const markup = `<li class="preview">
-    <a class="preview__link preview__link--active" href="#23456">
+    <a class="preview__link" href="#${recipe.recipe_id}">
       <figure class="preview__fig">
-        <img src="src/img/test-1.jpg" alt="Test" />
+        <img src="${recipe.image_url}" alt="${recipe.title}" />
       </figure>
       <div class="preview__data">
-        <h4 class="preview__title">Pasta with Tomato Cream ...</h4>
-        <p class="preview__publisher">The Pioneer Woman</p>
+        <h4 class="preview__title">${recipe.title}</h4>
+        <p class="preview__publisher">${recipe.publisher}</p>
         <div class="preview__user-generated">
           <svg>
             <use href="src/img/icons.svg#icon-user"></use>
@@ -18,9 +18,24 @@ const renderRecipe = recipe => {
         </div>
       </div>
     </a>
-  </li>`
+  </li>`;
+
+  elements.searchResaultList.insertAdjacentHTML('beforeend', markup);
+
 };
 
 export const renderResults = recipe => {
     recipe.forEach(renderRecipe);
 }
+
+
+/*
+image_url: "http://forkify-api.herokuapp.com/images/best_pizza_dough_recipe1b20.jpg"
+publisher: "101 Cookbooks"
+publisher_url: "http://www.101cookbooks.com"
+recipe_id: "47746"
+social_rank: 100
+source_url: "http://www.101cookbooks.com/archives/001199.html"
+title: "Best Pizza Dough Ever"
+searchResaultList
+*/
